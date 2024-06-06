@@ -1,0 +1,130 @@
+<!doctype html>
+
+<html lang="en" xmlns:th= "http://www.thymeleaf.org" th:fragment= "layout(content)">>
+
+<head>
+
+	<meta charset="UTF-8">
+
+	<title>Register</title>
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	
+</head>
+
+<body>
+
+	
+		<div class="signin">
+
+			<div class="content">
+
+				<h2>View Enquires </h2>
+
+
+					<form th:action="@{/enquiry}" th:object="${enq}" method="post">
+						
+						<table>
+							<tr>
+							
+							<td>Class Mode :</td>
+							<td>
+								<select th:field="*{mode}"
+								<option value="">-Select-</option>
+								<option value="classroom">Classroom</option>
+								<option value="online">Online</option>
+								</select>
+							</td>
+							
+							
+								<td>Course : </td>
+								<td>
+									<select th:field="*{course}">
+										<option value="">-Select-</option>
+										<option value="Java">Java</option>
+										<option value="SQL">SQL</option>
+										<option value="Python">Python</option>
+										<option value="SpringBoot">SpringBoot</option>
+									</select>
+								</td>
+								
+								
+								
+								<td>Status :</td>
+									<select  th:field="*{status}">
+										<option value="">-Select-</option>
+										<option value="new">New</option>
+										<option value="enrolled">Enrolled</option>
+										<option value="lost">Lost</option>
+									</select>
+								</td>
+								<td>
+									<input type="submit" value="Search" class="btn btn-primary">
+								</td>
+							</tr>
+						</table>
+					</form>
+
+					<table class="table table-bordered table-striped">
+						<thead>
+							<tr style="color: white;">
+								<th>ID</th>
+								<th>Name</th>
+								<th>Phno </th>
+								<th>Course</th>
+								<th>Status</th>
+								<th>Mode</th>
+								<th>Action</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="enq: ${enqs}">
+								<td th:text="${enq.enqId}" />
+								<td th:text="${enq.stuName}" />
+								<td th:text="${enq.stuPhno}" />
+								<td th:text="${enq.course}" />
+								<td th:text="${enq.status}" />
+							    <td th:text="${enq.mode}" />
+
+
+								<td>
+									<a href=""> Edit </a>
+									
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<table class="table">
+						<tr>
+							<th></th>
+							<td>
+								<div class=" btn btn-primary"> <a href="/dashboard" style="color: white;">View Dashboard </a> </div>
+							</td>
+							<th></th>
+							<td>
+								<div class="btn btn-primary"> <a href="/enquiry" style="color: white;">Add Enquires</a> </div>
+							</td>
+							<th></th>
+							<td>
+								<div class="btn btn-danger"> <a href="/" style="color: white;">Logout</a> </div>
+							</td>
+
+						</tr>
+					</table>
+
+				</div>
+
+			</div>
+
+		</div>
+
+
+
+	</section>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+		crossorigin="anonymous"></script>
+</body>
+
+</html>
